@@ -1,0 +1,51 @@
+.o_stade_financing_bi_frame {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 46px);
+    border: 0;
+    background: #fbfaf7;
+}
+
+.o_stade_financing_bi_drill {
+    padding: 16px;
+}
+.o_sfd_head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+.o_sfd_title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.o_sfd_back {
+    white-space: nowrap;
+}
+.o_sfd_actions {
+    min-width: 320px;
+}
+.o_sfd_th {
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+}
+.o_sfd_table {
+    overflow: auto;
+    max-height: 65vh;
+    border: 1px solid var(--bs-border-color, #dee2e6);
+    border-radius: 8px;
+}
+.o_sfd_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.o_sfd_pager {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}

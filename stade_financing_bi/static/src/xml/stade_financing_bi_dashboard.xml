@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="stade_financing_bi.Dashboard">
+        <iframe class="o_stade_financing_bi_frame" src="/stade/financing-bi" title="Financing BI"/>
+    </t>
+
+</templates>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="stade_financing_bi.Drill">
+        <div class="o_stade_financing_bi_drill">
+            <div class="o_sfd_head">
+                <div class="o_sfd_title">
+                    <button class="btn btn-sm btn-outline-secondary o_sfd_back" t-on-click="goBack">
+                        <i class="fa fa-arrow-left me-1"/>Volver
+                    </button>
+                    <div>
+                        <h4 class="mb-0" t-esc="state.title"/>
+                        <span class="text-muted" t-esc="state.model"/>
+                        <t t-if="state.currency_name"> · Moneda: <span t-esc="state.currency_name"/></t>
+                    </div>
+                </div>
+                <div class="o_sfd_actions">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="Buscar..."
+                               t-att-value="state.search" t-on-input="onInput" t-on-keydown="onKeydown"/>
+                        <button class="btn btn-primary" t-on-click="search">Buscar</button>
+                        <button class="btn btn-outline-secondary" t-on-click="clearSearch">Limpiar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="o_sfd_table">
+                <table class="table table-sm table-hover mb-0">
+                    <thead>
+                        <tr>
+                            <th t-foreach="state.columns" t-as="col" t-key="col.name"
+                                t-attf-class="o_sfd_th #{col.type === 'num' or col.type === 'money' ? 'text-end' : ''}"
+                                t-on-click="() => this.sortBy(col)">
+                                <t t-esc="col.label"/>
+                                <i t-if="state.sort === col.name"
+                                   t-attf-class="fa #{state.direction === 'asc' ? 'fa-caret-up' : 'fa-caret-down'}"/>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="state.rows" t-as="row" t-key="row_index">
+                            <td t-foreach="state.columns" t-as="col" t-key="col.name"
+                                t-attf-class="#{col.type === 'num' or col.type === 'money' ? 'text-end' : ''}">
+                                <t t-esc="fmt(row[col.name], col)"/>
+                            </td>
+                        </tr>
+                        <tr t-if="!state.rows.length">
+                            <td t-att-colspan="state.columns.length" class="text-center text-muted py-3">
+                                <t t-if="state.loading">Cargando…</t>
+                                <t t-else="">Sin datos.</t>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="o_sfd_footer">
+                <span><t t-esc="state.total"/> registros</span>
+                <div class="o_sfd_pager">
+                    <button class="btn btn-sm btn-outline-secondary" t-on-click="() => this.goPage(-1)"
+                            t-att-disabled="state.page &lt;= 1">‹</button>
+                    <span><t t-esc="state.page"/> / <t t-esc="state.pages"/></span>
+                    <button class="btn btn-sm btn-outline-secondary" t-on-click="() => this.goPage(1)"
+                            t-att-disabled="state.page &gt;= state.pages">›</button>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

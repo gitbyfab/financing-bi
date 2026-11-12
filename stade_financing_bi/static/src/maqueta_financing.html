@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financing BI</title>
+<script>
+(function(){try{var m=document.cookie.match(/(?:^|;\s*)color_scheme=([^;]+)/);var s=m?decodeURIComponent(m[1]):"light";document.documentElement.setAttribute("data-theme", s==="dark"?"dark":"light");}catch(e){}})();
+</script>
+<link rel="stylesheet" href="/stade_financing_bi/static/src/css/financing_bi_dark.css?v=20261209">
+</head>
+<body class="loading">
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="logo-mark">&#9635;</span>
+      <span>Financing BI<small>BUSINESS INTELLIGENCE</small></span>
+    </div>
+
+    <div class="side-label">Plataforma</div>
+    <nav class="nav" id="nav">
+      <button class="active" data-s="cartera"><i>&#9638;</i><span>Cartera y mora</span></button>
+      <button data-s="riesgo"><i>&#9888;</i><span>Riesgo y provisiones</span></button>
+      <button data-s="rentabilidad"><i>&#37;</i><span>Rentabilidad</span></button>
+      <button data-s="originacion"><i>&#9998;</i><span>Originación y comité</span></button>
+      <button data-s="cobranza"><i>&#9742;</i><span>Cobranza</span></button>
+      <button data-s="tesoreria"><i>&#9635;</i><span>Tesorería</span></button>
+      <button data-s="comercial"><i>&#9733;</i><span>Comercial y producto</span></button>
+      <button data-s="sla"><i>&#9881;</i><span>Eficiencia y SLA</span></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="update-card">
+        <small id="fresh-text"><span class="fresh-dot"></span>Actualizando&#8230;</small>
+      </div>
+      <div class="user">
+        <span class="avatar" id="user-avatar">&mdash;</span>
+        <div><b id="user-name-display">&mdash;</b><small id="user-role-display"></small></div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <div class="greeting">
+        <h1 id="page-title">Cartera y mora</h1>
+        <p id="page-subtitle">Tamaño, composición y calidad de la cartera</p>
+      </div>
+      <div class="top-actions">
+        <select class="pill-select" id="period-select" onchange="setPeriod(this.value)">
+          <option value="sem">Semana</option>
+          <option value="mes">Mes</option>
+          <option value="anio" selected>A&ntilde;o</option>
+          <option value="custom">Personalizado</option>
+        </select>
+        <select class="pill-select" id="f-month" style="display:none" onchange="setPeriodDate()" title="Mes"></select>
+        <select class="pill-select" id="f-year" onchange="setPeriodDate()" title="A&ntilde;o"></select>
+        <span class="range-inputs" id="period-custom" style="display:none">
+          <input type="date" id="pc-from" onchange="setCustomDates()">
+          <input type="date" id="pc-to" onchange="setCustomDates()">
+        </span>
+        <span class="date-pill"><i>&#9635;</i><span id="period-label">&mdash;</span></span>
+        <select class="pill-select" id="f-cur" onchange="setFilter('moneda',this)" title="Moneda"></select>
+        <span class="load-pill"><span class="spinner"></span>Actualizando&#8230;</span>
+        <select class="pill-select" id="export-select" onchange="exportDashboard(this.value);this.value='';" title="Exportar">
+          <option value="">Exportar</option>
+          <option value="png">PNG</option>
+          <option value="jpg">JPG</option>
+          <option value="html">HTML</option>
+        </select>
+        <button class="btn-ghost" onclick="reload()" title="Actualizar">&#8635;</button>
+      </div>
+    </header>
+
+    <div class="view" id="view"></div>
+  </main>
+</div>
+
+<script src="/stade_financing_bi/static/src/lib/html2canvas.js?v=20261209"></script>
+<script src="/stade_financing_bi/static/src/js/financing_bi_iframe.js?v=20261209"></script>
+</body>
+</html>
